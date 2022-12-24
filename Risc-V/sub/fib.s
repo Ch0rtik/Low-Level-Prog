@@ -2,26 +2,23 @@
 .text
 fib:
 .globl fib
-  li a3, 0
+  li t3, 0
+  li t0, 0
+  li t1, 1
 
 loop:
-  bgeu a3, a0, loop_exit
+  bgeu t3, a0, loop_exit
   
-  lw t0, 0(a1) # считываются числа
-  lw t1, 0(a2)
+  addi t2, t1, 0
   
-  add t1, t1, t0 # переменная с большим зхначением перезаписывается суммой
-  lw t0, 0(a2) # в переменную с мееньшим считывается бывшее большее значение
+  add t1, t1, t0 
+  addi t0, t2, 0
   
-  sw t0, 0(a1) # в памяти перезаписываются значения чисел
-  sw t1, 0(a2)
-  
-  
-  addi a3, a3, 1
+  addi t3, t3, 1
   jal zero, loop
   
 loop_exit:
-  lw a0, 0(a1) 
+  addi a0, t0, 0 
   
 finish:
   ret
