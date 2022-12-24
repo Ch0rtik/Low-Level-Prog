@@ -2,10 +2,10 @@
 .text
 fib:
 .globl fib
-  li a4, 0
+  li a3, 0
 
 loop:
-  bgeu a4, a0, loop_exit
+  bgeu a3, a0, loop_exit
   
   lw t0, 0(a1) # считываются числа
   lw t1, 0(a2)
@@ -17,7 +17,7 @@ loop:
   sw t1, 0(a2)
   
   
-  addi a4, a4, 1
+  addi a3, a3, 1
   jal zero, loop
   
 loop_exit:
